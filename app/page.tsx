@@ -203,7 +203,7 @@ export default function LandingPage() {
 
           {/* Verdict */}
           <div className="px-6 py-4 border-b border-dark-border bg-brand/5">
-            <p className="text-brand text-sm italic">"{sampleRoast.verdict}"</p>
+            <p className="text-brand text-sm italic">&quot;{sampleRoast.verdict}&quot;</p>
           </div>
 
           {/* Roast Text */}

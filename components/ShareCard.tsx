@@ -66,7 +66,7 @@ export default function ShareCard({ score, verdict, shareToken }: ShareCardProps
 
           {/* Verdict */}
           <blockquote className="text-white/70 text-lg italic max-w-md">
-            "{verdict}"
+            &quot;{verdict}&quot;
           </blockquote>
 
           {/* Share URL */}

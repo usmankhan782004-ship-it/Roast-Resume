@@ -82,7 +82,7 @@ export default function RoastCard({
 
       {/* Verdict */}
       <div className="px-6 py-4 border-b border-dark-border bg-brand/5">
-        <p className="text-brand font-semibold text-sm italic">"{verdict}"</p>
+        <p className="text-brand font-semibold text-sm italic">&quot;{verdict}&quot;</p>
       </div>
 
       {/* Roast */}

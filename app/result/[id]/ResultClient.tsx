@@ -57,7 +57,7 @@ export default function ResultClient({ roast }: ResultClientProps) {
           <ScoreCircle score={roast.score} size={200} />
           <div>
             <p className="text-brand font-semibold text-lg italic mb-2">
-              "{roast.verdict}"
+              &quot;{roast.verdict}&quot;
             </p>
             <p className="text-white/30 text-sm">ATS Score: {roast.ats_score}/100</p>
           </div>
