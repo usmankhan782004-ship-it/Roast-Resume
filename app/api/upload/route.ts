@@ -3,7 +3,7 @@ import { createRouteHandler } from "uploadthing/next";
 
 const f = createUploadthing();
 
-export const ourFileRouter = {
+const ourFileRouter = {
   resumeUploader: f({
     pdf: { maxFileSize: "8MB" },
   })
@@ -16,7 +16,7 @@ export const ourFileRouter = {
     }),
 } satisfies FileRouter;
 
-export type OurFileRouter = typeof ourFileRouter;
+type OurFileRouter = typeof ourFileRouter;
 
 const handlers = createRouteHandler({
   router: ourFileRouter,
