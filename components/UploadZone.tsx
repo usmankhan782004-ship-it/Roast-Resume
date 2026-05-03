@@ -19,6 +19,23 @@ export default function UploadZone({ onRoastComplete, compact = false }: UploadZ
   const [error, setError] = useState<string>("");
   const [progress, setProgress] = useState<string>("");
 
+  const persistRoast = (payload: Record<string, unknown>) => {
+    if (typeof window === "undefined") return;
+
+    const roastId = typeof payload.id === "string" ? payload.id : "";
+    const shareToken = typeof payload.share_token === "string" ? payload.share_token : "";
+
+    if (!roastId && !shareToken) return;
+
+    if (roastId) {
+      window.localStorage.setItem(`roast:${roastId}`, JSON.stringify(payload));
+    }
+
+    if (shareToken && shareToken !== roastId) {
+      window.localStorage.setItem(`roast:${shareToken}`, JSON.stringify(payload));
+    }
+  };
+
   const handleFile = useCallback((f: File) => {
     const allowed = ["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
     const allowedExt = /\.(pdf|docx|doc)$/i;
@@ -86,6 +103,7 @@ export default function UploadZone({ onRoastComplete, compact = false }: UploadZ
       // Step 3: Redirect
       setProgress("Redirecting to your roast...");
       const id = roastData.id || roastData.share_token;
+      persistRoast(roastData);
       if (onRoastComplete) {
         onRoastComplete(id);
       } else {

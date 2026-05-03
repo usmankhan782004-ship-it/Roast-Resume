@@ -34,13 +34,13 @@ export default async function ResultPage({ params }: PageProps) {
   const { id } = params;
 
   if (id === "demo") {
-    return <ResultClient roast={DEMO_RESULT} />;
+    return <ResultClient roast={DEMO_RESULT} roastId={id} />;
   }
 
   // 1. Check in-memory cache first (fast, works without Supabase table)
   const cached = getCachedRoast(id);
   if (cached) {
-    return <ResultClient roast={cached} />;
+    return <ResultClient roast={cached} roastId={id} />;
   }
 
   // 2. Try Supabase by UUID
@@ -67,8 +67,8 @@ export default async function ResultPage({ params }: PageProps) {
   }
 
   if (!roast) {
-    notFound();
+    return <ResultClient roast={null} roastId={id} />;
   }
 
-  return <ResultClient roast={roast} />;
+  return <ResultClient roast={roast} roastId={id} />;
 }
