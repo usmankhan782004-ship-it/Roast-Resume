@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
 import client from "@/lib/gemini";
 import { supabaseAdmin } from "@/lib/supabase";
 import { cacheRoast } from "@/lib/cache";
