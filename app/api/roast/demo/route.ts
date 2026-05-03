@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { cacheRoast } from "@/lib/cache";
-import { v4 as uuidv4 } from "uuid";
 
 const DEMO_RESUME_TEXT = `JOHN SMITH
 john.smith@gmail.com | LinkedIn: linkedin.com/in/johnsmith | Phone: 555-0100
@@ -60,7 +59,7 @@ const DEMO_ROAST = {
 
 export async function POST() {
   try {
-    const shareToken = uuidv4().replace(/-/g, "").slice(0, 12);
+    const shareToken = "demo";
     
     // Map to DB structure
     const dbData = {
@@ -97,7 +96,6 @@ export async function POST() {
 
     if (dbError) {
       console.error("Supabase demo insert error:", dbError);
-      // Still return the shareToken so it works with cache
     }
 
     return NextResponse.json({ id: resultId });
